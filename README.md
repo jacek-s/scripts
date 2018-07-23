@@ -34,3 +34,30 @@ Convert single icon and output in hex-encoded blue (#0000FF) color:
 
 ### Requirements:
 python, [icon-font-to-png](https://github.com/Pythonity/icon-font-to-png)
+
+## tcp_sniff.py
+
+Connects to specified TCP address and port and calls parser script while sniffing all incoming traffic. Sniffer script is hot-reloaded, allowing live analysis without having to restart the script. Script attempts to re-connect to server if the connection is dropped.
+
+### Usage:
+```
+usage: tcp_sniff.py [-h] [-i IP] -p PORT parser-script
+
+Connects to specified TCP address and port and calls parser script.
+
+positional arguments:
+  parser-script         parser script without file extension, must contain
+                        'parse' function
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i IP, --ip IP, --host IP
+                        host to connect to (default: 'localhost')
+  -p PORT, --port PORT  port to connect to
+```
+Run a `tcp_sniff_jlinkgdbserver` script:
+`./tcp_sniff.py -p 2332 tcp_sniff_jlinkgdbserver`
+
+## tcp_sniff_jlinkgdbserver.py
+
+Parser script used in conjuction with `tcp_sniff.py`. Analyzes network traffic on SWO port for JLinkGDBServer.

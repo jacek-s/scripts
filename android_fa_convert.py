@@ -1,4 +1,8 @@
 #!/usr/bin/python
+# Author: Jacek Slimok
+# Converts icons to PNG in all Android sizes and places them in their respective 
+# directories: "mipmap-mdpi" for 48,48px, mipmap-hdpi" for 72x72px etc. 
+# Replaces '-' with '_' in output file names.
 
 import argparse, os, shutil
 
