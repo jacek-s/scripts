@@ -55,7 +55,7 @@ optional arguments:
                         host to connect to (default: 'localhost')
   -p PORT, --port PORT  port to connect to
 ```
-Run a `tcp_sniff_jlinkgdbserver` script:
+Connect to `localhost` on port `2332` and run a `tcp_sniff_jlinkgdbserver` script:
 `./tcp_sniff.py -p 2332 tcp_sniff_jlinkgdbserver`
 
 ## tcp_sniff_jlinkgdbserver.py

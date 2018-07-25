@@ -3,14 +3,20 @@
 
 def handle_pair(data):
 	tag = ord(data[0])
-	char = data[1]
 	#print "t: {} ({}), c: {} (0x{})".format(bin(tag), hex(tag), char, char.encode('hex'))
-	if (tag & 0x7) != 0x1:
-		print "Unknown tag: {}".format(hex(tag))
+	num_chars = 0
+	if (tag & 0x7) == 1:
+		num_chars = 1
+	elif (tag & 0x7) == 2:
+		num_chars = 2
+	elif (tag & 0x7) == 3:
+		num_chars = 4
 	else:
+		print "Unknown tag: {}".format(hex(tag))
+	if num_chars > 0:
 		channel = (tag >> 3)
-		print "[{}], c: {} (0x{})".format(channel, char, char.encode('hex'))
-	return data[2:]
+		print "[{}], c: {} (0x{})".format(channel, data[1:1+num_chars], data[1:1+num_chars].encode('hex'))
+	return data[(1+num_chars):]
 
 def parse(data):
 	print "\n{}".format(data.encode('hex'))

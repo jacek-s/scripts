@@ -13,6 +13,7 @@ class ServerConnection():
 		self.parser = importlib.import_module(parser)
 		self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.server.connect((host, port))
+		print "Connected to: %s:%d" % (self.host, self.port)
 
 	def run(self):
 		while True:
